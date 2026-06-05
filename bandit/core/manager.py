@@ -14,6 +14,7 @@ import tokenize
 import traceback
 
 from rich import progress
+from rich.console import Console
 
 from bandit.core import constants as b_constants
 from bandit.core import extension_loader
@@ -270,7 +271,10 @@ class BanditManager:
             len(self.files_list) > PROGRESS_THRESHOLD
             and LOG.getEffectiveLevel() <= logging.INFO
         ):
-            files = progress.track(self.files_list)
+            files = progress.track(
+                self.files_list,
+                console=Console(file=sys.stderr),
+            )
         else:
             files = self.files_list
 
