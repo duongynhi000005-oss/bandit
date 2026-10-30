@@ -141,7 +141,7 @@ class BanditNodeVisitor:
             self.imports.add(module + "." + nodename.name)
             self.context["module"] = module
             self.context["name"] = nodename.name
-        self.update_scores(self.tester.run_tests(self.context, "ImportFrom"))
+            self.update_scores(self.tester.run_tests(self.context, "ImportFrom"))
 
     def visit_Constant(self, node):
         """Visitor for AST Constant nodes
